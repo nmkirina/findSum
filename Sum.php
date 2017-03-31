@@ -13,27 +13,17 @@ class Sum {
 
     public function find($array) {
         
-        $lastId = count($array) - 1;
-
-        foreach ($array as $id => $item){
-
-            if($item > 0) {
-
-                $this->sum += $item;
-                $isFirstNegative = true;
-
-                if (($id == $lastId)&&($this->bigSum < $this->sum)) {
+        $arraySize = count($array);
+        for ($i = 0; $i < $arraySize; $i++){
+            
+            $this->sum = 0;
+            
+            for ($j = $i; $j < $arraySize; $j++) {
+                
+                $this->sum += $array[$j];
+                if ($this->sum > $this->bigSum) {
                     $this->bigSum = $this->sum;
                 }
-
-            } elseif ($isFirstNegative ) {
-
-                if ($this->bigSum < $this->sum) {
-                    $this->bigSum = $this->sum;
-                }
-
-                $this->sum = 0;
-                $isFirstNegative = false;
             }
         }
         return $this->bigSum;
