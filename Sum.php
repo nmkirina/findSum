@@ -16,14 +16,13 @@ class Sum {
         $arraySize = count($array);
         for ($i = 0; $i < $arraySize; $i++){
             
-            $this->sum = 0;
+            $this->sum += $array[$i];
             
-            for ($j = $i; $j < $arraySize; $j++) {
-                
-                $this->sum += $array[$j];
-                if ($this->sum > $this->bigSum) {
-                    $this->bigSum = $this->sum;
-                }
+            if ($this->sum > $this->bigSum) {
+                $this->bigSum = $this->sum;
+            }
+            if ($this->sum < 0) {
+                $this->sum = 0;
             }
         }
         return $this->bigSum;
